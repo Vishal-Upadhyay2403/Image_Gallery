@@ -4,6 +4,7 @@ import Header from './components/header';
 import Search from './components/Search';
 
 
+const UNSPLACE_KEY = process.env.REACT_APP_UNSPLACE_KEY
 
 
 const App = () => {
@@ -11,10 +12,20 @@ const App = () => {
 
   const handleSerachSubmit = (e) => {
   e.preventDefault();
-  console.log(word);
+  //console.log(word);
+  //console.log(UNSPLACE_KEY);
+  fetch(`https://api.unsplash.com/photos/random/?query=${word}$client_id=${UNSPLACE_KEY}`)
+    .then((res) => res.json())
+    .then((data) =>{
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
 }
 
 //console.log(word);
+
   return (
     <div className="App">
       <Header title="Images Gallery"/>
