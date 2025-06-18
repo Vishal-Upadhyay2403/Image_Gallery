@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/header';
 import Search from './components/Search';
 import ImageCard from './components/ImageCard';
+import Welcome from './components/Welcome';
 import { Container,Row,Col } from 'react-bootstrap';
 
 const UNSPLACE_KEY = process.env.REACT_APP_UNSPLACE_KEY
@@ -38,13 +39,15 @@ const handleDeleteImage = (id) => {
       <Header title="Images Gallery"/>
       <Search word={word} setWord = {setWord} handleSubmit={handleSerachSubmit}/>
       <Container className='mt-4'>
-        <Row xs={1} md={2} lg={3}>
-      {images.map((image, i) => (
-        <Col key={i} className='pd-3'>
-        <ImageCard  image={image} deleteImage= {handleDeleteImage} />
-        </Col>
+        {images.length ? (
+          <Row xs={1} md={2} lg={3}>
+            {images.map((image, i) => (
+            <Col key={i} className='pd-3'>
+            <ImageCard  image={image} deleteImage= {handleDeleteImage} />
+          </Col>
       ))}
-        </Row>
+        </Row>) : ( <Welcome/> 
+      ) }
       </Container>
     </div>
   );
