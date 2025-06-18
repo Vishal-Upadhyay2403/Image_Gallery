@@ -6,7 +6,6 @@ import Search from './components/Search';
 
 const UNSPLACE_KEY = process.env.REACT_APP_UNSPLACE_KEY
 
-
 const App = () => {
   const [word, setWord] = useState('');
 
@@ -21,9 +20,9 @@ const App = () => {
     })
     .catch((err) => {
       console.log(err);
-    })
-    setWord('')
-}
+    });
+    setWord('');
+};
 
 //console.log(word);
 
