@@ -8,5 +8,8 @@
     "editor.codeActionsOnSave": {
 
         "source.fixAll.eslint":"always"
-    }
+    },
+    "python.linting.pycodestyleEnabled" : true,
+    "python.linting.pylintEnabled" : true,
+    "python.formatting.provider" : "Black"
 }
