@@ -5,6 +5,8 @@ import requests
 from markupsafe import escape
 import json
 from werkzeug import Response
+from flask_cors import CORS
+
 
 
 
@@ -21,6 +23,8 @@ if not UNSPLASH_KEY:
     raise EnvironmentError("please create .env.local file and insert there UNSPLACE_KEY!!!")
 
 app = Flask(__name__)
+
+CORS(app)
 
 app.config["DEBUG"] = DEBUG
 

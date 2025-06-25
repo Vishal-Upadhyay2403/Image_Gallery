@@ -6,7 +6,7 @@ import ImageCard from './components/ImageCard';
 import Welcome from './components/Welcome';
 import { Container,Row,Col } from 'react-bootstrap';
 
-const UNSPLACE_KEY = process.env.REACT_APP_UNSPLACE_KEY
+const API_URL = process.env.API_URL || 'http://192.168.0.105:5050';
 
 const App = () => {
   const [word, setWord] = useState('');
@@ -17,7 +17,7 @@ const App = () => {
   e.preventDefault();
   //console.log(word);
   //console.log(UNSPLACE_KEY);
-  fetch(`https://api.unsplash.com/photos/random/?query=${word}&client_id=${UNSPLACE_KEY}`)
+  fetch(`${API_URL}/new-image?query=${word}`)
     .then((res) => res.json())
     .then((data) =>{
       setImages([{...data, title:word}, ...images]);
