@@ -4,6 +4,7 @@ WORKDIR /app
 
 EXPOSE 5050
 
+
 COPY Pipfile ./
 COPY Pipfile.lock ./
 
