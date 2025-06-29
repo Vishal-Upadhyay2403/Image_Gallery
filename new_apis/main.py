@@ -6,10 +6,7 @@ from markupsafe import escape
 import json
 from werkzeug import Response
 from flask_cors import CORS
-
-
-
-
+from mongo_client import insert_test_document
 
 load_dotenv(dotenv_path = "./.env.local")
 
@@ -27,6 +24,8 @@ app = Flask(__name__)
 CORS(app)
 
 app.config["DEBUG"] = DEBUG
+
+insert_test_document()
 
 @app.route("/new-image")
 def new_image():

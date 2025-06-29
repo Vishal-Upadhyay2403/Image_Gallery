@@ -12,6 +12,7 @@ COPY Pipfile.lock ./
 RUN pip install pipenv
 RUN pip install python-dotenv
 RUN pip install flask
+RUN pip install pymongo
 RUN pip install requests
 RUN pip install flask_cors
 #RUN pipenv lock --requirements > requirements.txt
