@@ -1,9 +1,9 @@
 import React from "react";
-import { Button, Jumbotron } from "react-bootstrap";
+import { Button, Container, Jumbotron } from "react-bootstrap";
 
 
 const Welcome = () => (
-  <Jumbotron>
+  <Container>
     <h1>Images Gallery</h1>
     <p>
       this is the simple application uses unsplash api.
@@ -12,7 +12,7 @@ const Welcome = () => (
       <Button variant="primary" href="https://unsplash.com"
       target="_blank">Learn More</Button>
     </p>
-  </Jumbotron>
+  </Container>
 );
 
 

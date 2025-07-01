@@ -7,7 +7,7 @@ const Search = ({word, setWord, handleSubmit}) => {
             <Row className="justify-content-center">
                 <Col xs={12} md={8} lg={6}>
                     <Form onSubmit={handleSubmit}>
-                        <Form.Row>
+                        <Row>
                             <Col xs={9}>
                                 <Form.Control 
                                     type="text"
@@ -19,7 +19,7 @@ const Search = ({word, setWord, handleSubmit}) => {
                             <Col>
                                 <Button variant="primary" type="submit">Search</Button>
                             </Col>
-                        </Form.Row>
+                        </Row>
 
                     </Form>
                 
