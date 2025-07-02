@@ -5,7 +5,7 @@ import Header from './components/header';
 import Search from './components/Search';
 import ImageCard from './components/ImageCard';
 import Welcome from './components/Welcome';
-import { Container,Row,Col } from 'react-bootstrap';
+import { Container,Row,Col, Image } from 'react-bootstrap';
 
 const API_URL = process.env.API_URL || 'http://192.168.0.105:5050';
 
@@ -58,6 +58,34 @@ const handleDeleteImage = (id) => {
   setImages(images.filter((image) => image.id !== id));
 };
 
+
+const handleSaveImage = async (id) => {
+  const imageToBeSave = images.find((image) => image.id == id)
+  imageToBeSave.saved = true;
+  
+  try {
+    const res = await axios.post(`${API_URL}/images`, imageToBeSave);
+    
+    if(res.data?.inserted_id) {
+      setImages(
+        images.map((image) => (
+          image.id === id ? {...image, saved:true} : image )
+        )
+      );
+        //setImages(updatedImages);
+    
+    }
+
+  } catch (error) {
+
+    console.log(error);
+
+  }
+
+}
+
+
+
   return (
     <div className="App">
       <Header title="Images Gallery"/>
@@ -67,7 +95,8 @@ const handleDeleteImage = (id) => {
           <Row xs={1} md={2} lg={3}>
             {images.map((image, i) => (
             <Col key={i} className='pd-3'>
-            <ImageCard  image={image} deleteImage= {handleDeleteImage} />
+            <ImageCard  image={image} deleteImage= {handleDeleteImage} 
+            saveImage = {handleSaveImage} />
           </Col>
       ))}
         </Row>) : ( <Welcome/> 
